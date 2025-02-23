@@ -1,0 +1,9 @@
+<img *ngIf="isImageVisible" src="{{storeInfo.imgUrl}}" alt="{{storeInfo.name}}">
+<button type="button" class="btn btn-primary" (click)="toggleImage()">toggle Image</button>
+<h1>{{storeInfo.name}}</h1>
+<!-- <h3>{{storeInfo.branches}}</h3> -->
+ <ul *ngFor="let branch of storeInfo.branches">
+<li>
+    {{branch}}
+</li>
+ </ul>

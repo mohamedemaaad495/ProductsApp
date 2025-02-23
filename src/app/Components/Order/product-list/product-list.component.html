@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Available Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Count</th>
+            <th scope="col">Buy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productList">
+            <td>{{product?.id}}</td>
+            <td>{{product.name}}</td>
+            <td><img src="{{product.imgUrl}}" alt="{{product.name}}"></td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td><input #itemCount type="number" class="form-control"></td>
+            <td><button type="button" class="btn btn-primary" (click)="buy(product.id,itemCount.value)">buy</button></td>
+        </tr>
+    </tbody>
+</table>
+<h3>
+    Order Total Price: {{orderTotalPrice}}
+</h3>
