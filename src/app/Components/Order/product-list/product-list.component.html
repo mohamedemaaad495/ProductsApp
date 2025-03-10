@@ -1,3 +1,16 @@
+<div class="mb-3">
+<label for="prdCat" class="form-control">Category:</label>
+<!-- <select #cat class="form-control" name="cat" id="prdCat" (onchange)="GetSelectedCat(cat.value)"></select> -->
+<select class="form-control" name="cat" id="prdCat" [(ngModel)]="selectedcatID">
+<option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+</select>
+</div>
+<div class="text-secondary">
+    [To be removed]
+{{selectedcatID}}
+</div>
+<button class="btn btn-primary" (click)="Changecat()">Change Category</button>
+<hr>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -11,14 +24,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of productList">
+        <tr *ngFor="let product of productList" 
+        [class.d-none]="selectedcatID != product.categoryId"
+        [style.background-color]="(product.quantity == 0)? 'yellow' : 'lightgray'">
             <td>{{product?.id}}</td>
             <td>{{product.name}}</td>
             <td><img src="{{product.imgUrl}}" alt="{{product.name}}"></td>
             <td>{{product.quantity}}</td>
             <td>{{product.price}}</td>
             <td><input #itemCount type="number" class="form-control"></td>
-            <td><button type="button" class="btn btn-primary" (click)="buy(product.id,itemCount.value)">buy</button></td>
+            <td><button type="button" class="btn btn-primary" (click)="buy(product.price,itemCount.value)">buy</button></td>
         </tr>
     </tbody>
 </table>
